@@ -1,2 +1,2 @@
 # Front-End of Food dilevery website 
-![Desktop Look](images/sample1.png)
+![Desktop Look](project1/images/sample1.png)
