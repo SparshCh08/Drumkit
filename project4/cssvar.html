@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cssvar.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Play with variables</title>
+  </head>
+  <body>
+    <div class="about">
+      Update CSS Variables with <span class="h1">JS</span>
+    </div>
+    <div class="changes">
+      <lable for="spacing">Spacing:</lable>
+      <input
+        name="spacing"
+        id="spacing"
+        type="range"
+        min="10"
+        max="200"
+        value="10"
+        data-sizing="px"
+      />
+      <lable for="blur">Blur:</lable>
+      <input
+        name="blur"
+        id="blur"
+        type="range"
+        min="0"
+        max="25"
+        value="10"
+        data-sizing="px"
+      />
+      <lable for="basecolor">Base Color:</lable>
+      <input name="base" id="basecolor" type="color" value="#ffc600" />
+    </div>
+    <div class="images">
+      <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="" />
+    </div>
+
+    <script>
+      const inputs = document.querySelectorAll(".changes input");
+
+      function updatechanges() {
+        const suff = this.dataset.sizing || "";
+        // this.dataset.sizing ki value utha as
+        // in this case it will pick the px for ranges and blank for color
+        // document ki documentelement utha k style property update krni h
+        // this.name give us the name of that input that's why we must have to give it a name
+        // these names must be same as root variables + suff for px or ''(blank)
+        document.documentElement.style.setProperty(
+          `--${this.name}`,
+          this.value + suff
+        );
+        console.log(this.value);
+      }
+      inputs.forEach((input) =>
+        input.addEventListener("change", updatechanges)
+      );
+      inputs.forEach((input) =>
+        input.addEventListener("mousemove", updatechanges)
+      );
+    </script>
+  </body>
+</html>
